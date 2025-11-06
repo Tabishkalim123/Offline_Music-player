@@ -234,3 +234,70 @@ window.addEventListener('DOMContentLoaded', () => {
   loadSongs();
   showMessage('🎵 Music Player Ready!', 'green');
 });
+
+
+
+// Global slider and time elements
+const seekSlider = document.getElementById('seekSlider');
+const currentTimeEl = document.getElementById('currentTime');
+const totalTimeEl = document.getElementById('totalTime');
+
+// Format time in mm:ss
+function formatTime(seconds) {
+  const min = Math.floor(seconds / 60);
+  const sec = Math.floor(seconds % 60);
+  return `${min.toString().padStart(2,'0')}:${sec.toString().padStart(2,'0')}`;
+}
+
+// Play Audio
+function playAudio(index) {
+  if (index < 0 || index >= songs.length) return;
+  
+  const song = songs[index];
+  currentIndex = index;
+  
+  if (currentAudio) {
+    currentAudio.pause();
+    currentAudio = null;
+  }
+  
+  currentAudio = new Audio(`${API_URL}/songs/${song.FilePath}`);
+  
+  document.getElementById('nowPlaying').textContent = 
+    `🎵 Now Playing: ${song.Title} - ${song.Artist}`;
+  
+  currentAudio.play().catch(err => {
+    showMessage('❌ Failed to play: ' + err.message, 'red');
+  });
+  
+  // Wait until metadata is loaded to get duration
+  currentAudio.addEventListener('loadedmetadata', () => {
+    seekSlider.max = Math.floor(currentAudio.duration);
+    totalTimeEl.textContent = formatTime(currentAudio.duration);
+  });
+  
+  // Update slider and current time
+  currentAudio.addEventListener('timeupdate', () => {
+    seekSlider.value = Math.floor(currentAudio.currentTime);
+    currentTimeEl.textContent = formatTime(currentAudio.currentTime);
+  });
+
+  currentAudio.onended = () => {
+    if (isRepeat) {
+      playAudio(currentIndex);
+    } else {
+      playNext();
+    }
+  };
+
+  currentAudio.onerror = () => {
+    showMessage('❌ Audio file not found or cannot be played', 'red');
+  };
+}
+
+// Seek Audio when slider changes
+function seekAudio(value) {
+  if (currentAudio) {
+    currentAudio.currentTime = value;
+  }
+}
