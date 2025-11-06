@@ -1,0 +1,178 @@
+/* Reset and base styles */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background: #121212;
+  color: #fff;
+  line-height: 1.6;
+}
+
+/* Container */
+.container {
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 20px;
+  background: #1e1e1e;
+  border-radius: 12px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.5);
+}
+
+/* Header */
+h1 {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 20px;
+  color: #1db954;
+}
+
+/* Form */
+form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+form input {
+  padding: 12px;
+  flex: 1;
+  border: none;
+  border-radius: 8px;
+  background: #2a2a2a;
+  color: #fff;
+}
+form input::placeholder {
+  color: #aaa;
+}
+form button {
+  padding: 12px 20px;
+  background: linear-gradient(135deg, #1db954, #1ed760);
+  border: none;
+  border-radius: 30px;
+  color: #fff;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+form button:hover {
+  transform: scale(1.05);
+  background: linear-gradient(135deg, #1ed760, #1db954);
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.4);
+}
+
+/* Now Playing */
+#nowPlaying {
+  text-align: center;
+  margin: 20px 0;
+  font-size: 1.2rem;
+  color: #1db954;
+  animation: pulse 2s infinite;
+}
+@keyframes pulse {
+  0% { opacity: 0.6; }
+  50% { opacity: 1; }
+  100% { opacity: 0.6; }
+}
+
+/* Global Controls */
+#audio-controls,
+#globalControls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  margin: 20px 0;
+}
+.audio-controls button,
+#globalControls button {
+  border-radius: 50%;
+  padding: 12px;
+  width: 45px;
+  height: 45px;
+  font-size: 1.2rem;
+  background: linear-gradient(135deg, #333, #555);
+  color: #fff;
+
+  border: none;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease;
+}
+.audio-controls button:hover,
+#globalControls button:hover {
+  background: linear-gradient(135deg, #1db954, #1ed760);
+  transform: scale(1.1);
+}
+
+/* Volume Slider */
+.audio-controls input[type="range"],
+#globalControls input[type="range"] {
+  width: 120px;
+  accent-color: #1db954;
+}
+
+/* Table */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+th, td {
+  padding: 12px;
+  text-align: center;
+  border-bottom: 1px solid #333;
+}
+th {
+  background: #2a2a2a;
+  color: #1db954;
+}
+td {
+  background: #1e1e1e;
+}
+
+/* Delete Button */
+button[onclick^="deleteSong"] {
+  background: linear-gradient(135deg, #ff4e50, #f44336);
+  border-radius: 30px;
+}
+button[onclick^="deleteSong"]:hover {
+  background: linear-gradient(135deg, #f44336, #ff4e50);
+  transform: scale(1.05);
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  form {
+    flex-direction: column;
+  }
+  .audio-controls,
+  #globalControls {
+    flex-wrap: wrap;
+  }
+}
+form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 20px;
+  justify-content: center;
+}
+
+#audio-controls,
+#globalControls {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+  margin: 20px 0;
+}
+
+h5 {
+  text-align: center;
+  margin-bottom: 10px;
+  margin-top: 0px;
+  color: #4fff83;
+}

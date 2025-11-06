@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Offline Music Player
+  </title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+    <h1>Offline Music Player  </h1>
+    <h5>By Md Tabish Kalim</h5>
+
+    <form id="songForm">
+      <input type="number" id="songID" placeholder="SongID" required />
+      <input type="text" id="title" placeholder="Title" required />
+      <input type="text" id="artist" placeholder="Artist" required />
+      <input type="text" id="album" placeholder="Album" required />
+      <input type="text" id="filePath" placeholder="File name (e.g. song1.mp3)" required />
+      <button type="submit">Add Song</button>
+    </form>
+
+    <!-- ✅ Message Box for Feedback -->
+    <div id="messageBox"></div>
+
+    <div id="nowPlaying">Currently Playing: None</div>
+
+    <div id="globalControls" class="audio-controls">
+      <button onclick="playPrevious()">⏮</button>
+      <button onclick="playAudio(currentIndex)">▶️</button>
+      <button onclick="pauseAudio()">⏸</button>
+      <button onclick="toggleRepeat()">🔁</button>
+      <button onclick="playNext()">⏭</button>
+      <input type="range" min="0" max="1" step="0.01" onchange="setVolume(this.value)" />
+    </div>
+
+    <table id="songsTable">
+      <thead>
+        <tr>
+          <th>Title</th>
+          <th>Artist</th>
+          <th>Album</th>
+          <th>Controls</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
