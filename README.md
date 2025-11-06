@@ -1,7 +1,5 @@
 # 🎵 Offline Music Player – Ad-Free & Premium-Free
 
-![Music Player Banner](https://via.placeholder.com/900x200.png?text=Offline+Music+Player)
-
 An **offline, ad-free music player** built with Python Flask, HTML, CSS, and JavaScript.
 Designed to let you **enjoy your local music library** without subscriptions, ads, or internet dependency.
 
@@ -41,7 +39,8 @@ This project provides a **simple, free, offline alternative** where you can play
 
 ## 🖥️ Screenshots
 
-<img width="1426" height="967" alt="image" src="https://github.com/user-attachments/assets/b2241a7c-ecfc-4075-bc0c-278132612ba3" />
+<img width="1415" height="941" alt="image" src="https://github.com/user-attachments/assets/a8f410eb-5f20-45e2-9f03-099d633b427e" />
+
 
 
 ---
